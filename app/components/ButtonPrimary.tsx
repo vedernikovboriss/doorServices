@@ -27,6 +27,7 @@ export default function ButtonPrimary({
   const router = useTransitionRouter();
   const lenis = useLenis();
   const lenisRef = useRef(lenis);
+
   useEffect(() => {
     lenisRef.current = lenis;
   }, [lenis]);
@@ -129,13 +130,15 @@ export default function ButtonPrimary({
     });
   }, []);
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!isSubmit && !to) scrollToForm();
+    if (to) router.push(to);
+  };
   return (
     <button
       type={isSubmit ? 'submit' : 'button'}
-      onClick={() => {
-        if (!isSubmit && !to) scrollToForm();
-        if (to) router.push(to);
-      }}
+      onClick={handleClick}
       className="relative group flex w-fit h-11 gap-1 cursor-pointer"
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
