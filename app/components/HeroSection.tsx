@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function HeroSection() {
   return (
     <section className="relative flex flex-col justify-center min-h-[100dvh] text-(--white) bg-(--black) pt-12 pb-12 px-4 sm:px-5 lg:px-[2vw] overflow-x-hidden box-border">
-      <div className="relative flex flex-col gap-4 sm:gap-6 lg:gap-8 h-full min-h-[70dvh] justify-center min-w-0 z-10">
+      <div className="relative flex flex-col gap-4 sm:gap-6 lg:gap-8 h-full justify-center min-w-0 z-10">
         <div className="flex flex-col gap-0 w-full max-w-full min-w-0">
           <h1 className="h1">
             <span className="block">Монтаж межкомнатных дверей. </span>

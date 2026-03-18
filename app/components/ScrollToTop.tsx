@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { useLenis } from 'lenis/react';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -9,12 +9,13 @@ export default function ScrollToTop() {
   const pathname = usePathname();
   const lenis = useLenis();
 
-  useLayoutEffect(() => {
-    // Important: `useLayoutEffect` runs before child layout effects.
-    // This ensures ScrollTriggers created by the next page don't start in
-    // an "already scrolled past" state.
+  useEffect(() => {
     if (lenis) {
-      lenis.scrollTo(0, { immediate: true, duration: 0 });
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          lenis?.scrollTo(0, { immediate: true });
+        });
+      });
     } else {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }

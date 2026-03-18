@@ -34,9 +34,9 @@ const whatYouWillLearnIcons = [
 
 const page = () => {
   return (
-    <main className="bg-(--white) pt-16">
-      <section className="relative section-base-padding bg-(--white) flex flex-col gap-6 sm:gap-8 overflow-hidden lg:overflow-visible">
-        <div className="relative z-10 flex flex-col gap-2 max-w-full lg:max-w-[min(100%,52rem)] pr-0 sm:pr-[min(35%,12rem)] lg:pr-0">
+    <main className="bg-(--white)">
+      <section className="relative section-base-padding bg-(--white) flex flex-col justify-center gap-6 sm:gap-8 overflow-hidden lg:overflow-visible min-h-svh">
+        <div className="relative z-10 flex flex-col gap-2 max-w-full  pr-0">
           <span className="subtitle text-(--accent)">(Получение навыков)</span>
           <h1 className="h2 text-(--black)">Обучение</h1>
         </div>
@@ -48,7 +48,7 @@ const page = () => {
           Хочешь освоить достойную профессию установщика межкомнатных дверей?
         </AnimatedText>
 
-        <p className="p-medium relative z-10 max-w-full lg:max-w-[min(100%,52rem)]">
+        <p className="p-medium relative z-10l">
           Запишитесь на обучение. Мы научим вас устанавливать двери быстро и
           качественно, чтобы вы могли начать зарабатывать уже через несколько
           дней.
@@ -57,7 +57,7 @@ const page = () => {
           <ButtonPrimary isDark={true}>Записаться</ButtonPrimary>
         </div>
 
-        <div className="pointer-events-none absolute right-0 bottom-0 w-[min(45vw,200px)] sm:w-[min(50vw,260px)] lg:w-auto opacity-25 sm:opacity-35 lg:opacity-100 -mr-2 sm:-mr-4 lg:mr-0">
+        <div className="pointer-events-none absolute right-0 w-[min(45vw,200px)] sm:w-[min(50vw,260px)] lg:w-auto opacity-25 sm:opacity-35 lg:opacity-100 -mr-2 sm:-mr-4 lg:mr-0">
           <DoorSVG />
         </div>
       </section>

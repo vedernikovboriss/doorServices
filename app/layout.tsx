@@ -9,6 +9,7 @@ import ScrollToTop from './components/ScrollToTop';
 import ScrollTriggerReset from './components/ScrollTriggerReset';
 import { ViewTransitions } from 'next-view-transitions';
 import { TransitionManager } from './components/TransitionManager';
+import { DisableScrollRestoration } from './components/DisableScrollPosition';
 
 const notoSans = Noto_Sans({
   variable: '--font-noto-sans',
@@ -42,6 +43,7 @@ export default function RootLayout({
 
           <LenisProvider>
             <ScrollTriggerReset />
+            <DisableScrollRestoration />
             <ScrollToTop />
             <TransitionManager />
             {children}
