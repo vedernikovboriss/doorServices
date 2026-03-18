@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col justify-center min-h-[100dvh] text-(--white) bg-(--black) pt-12 pb-12 px-4 sm:px-5 lg:px-[2vw] overflow-x-hidden box-border">
+    <section className="relative flex flex-col justify-center min-h-svh text-(--white) bg-(--black) pt-12 pb-12 px-4 sm:px-5 lg:px-[2vw] overflow-x-hidden box-border">
       <div className="relative flex flex-col gap-4 sm:gap-6 lg:gap-8 h-full justify-center min-w-0 z-10">
         <div className="flex flex-col gap-0 w-full max-w-full min-w-0">
           <h1 className="h1">
@@ -25,7 +25,7 @@ export default function HeroSection() {
         </p>
         <ButtonPrimary isDark={false}>Заказать услугу</ButtonPrimary>
       </div>
-      <div className="absolute bottom-[2vw] right-[2vw] z-10 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 shrink-0 opacity-80">
+      <div className="absolute bottom-4 right-4 lg:bottom-[2vw] lg:right-[2vw] sm:bottom-5 sm:right-5 z-10 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 shrink-0 opacity-80">
         <ArrowUpRightIcon />
       </div>
 
