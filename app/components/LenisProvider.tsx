@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { ReactLenis, useLenis } from 'lenis/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 type Props = {
@@ -49,6 +49,25 @@ function ScrollTriggerLenisSync() {
  * and the instance is ready as soon as the tree is mounted.
  */
 export default function LenisProvider({ children }: Props) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+
+    // Safari fallback: older versions may not support addEventListener on MediaQueryList.
+    if (typeof mq.addEventListener === 'function') {
+      mq.addEventListener('change', update);
+      return () => mq.removeEventListener('change', update);
+    }
+
+    mq.addListener(update);
+    return () => mq.removeListener(update);
+  }, []);
+
+  if (isMobile) return <>{children}</>;
+
   return (
     <ReactLenis
       root
