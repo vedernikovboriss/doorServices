@@ -14,19 +14,15 @@ export default function ScrollToTop() {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           lenis?.scrollTo(0, { immediate: true });
+          ScrollTrigger.refresh();
+          ScrollTrigger.update();
         });
       });
     } else {
       window.scrollTo({ top: 0, behavior: 'auto' });
-    }
-
-    // Re-measure after React effects create triggers for the new route.
-    const id = window.setTimeout(() => {
       ScrollTrigger.refresh();
       ScrollTrigger.update();
-    }, 0);
-
-    return () => window.clearTimeout(id);
+    }
   }, [pathname, lenis]);
 
   return null;
