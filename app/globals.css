@@ -57,6 +57,21 @@ body {
   animation-delay: 300ms;
 }
 
+/* Keep the fixed nav/header from fading during route transitions. */
+.view-transition-nav {
+  view-transition-name: nav;
+}
+
+::view-transition-old(nav) {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+::view-transition-new(nav) {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);

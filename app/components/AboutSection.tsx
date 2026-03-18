@@ -19,7 +19,9 @@ export default function AboutSection() {
           <span className="subtitle text-(--accent)">
             //СЕКРЕТ НАШЕГО ВЫСОКОГО КАЧЕСТВА
           </span>
-          <span className="subtitle text-(--accent)">(О НАС)</span>
+          <span className="sm:block hidden subtitle text-(--accent)">
+            (О НАС)
+          </span>
         </div>
         <AnimatedText as="h2" className="h2">
           Более 25 лет профессионального монтажа межкомнатных дверей
