@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function HeroSection() {
   return (
-    <section className="flex flex-col min-h-screen text-(--black) pt-14 sm:pt-16 pb-8 sm:pb-[2vw] px-4 sm:px-5 lg:px-[2vw] overflow-x-hidden box-border gap-6 sm:gap-8 justify-end">
+    <section className="flex flex-col min-h-[100dvh] text-(--black) pt-14 sm:pt-16 pb-8 sm:pb-[2vw] px-4 sm:px-5 lg:px-[2vw] overflow-x-hidden box-border gap-6 sm:gap-8 justify-end">
       <h1 className="h1">
         <span className="block">Монтаж межкомнатных дверей. </span>
         <span className="block">Качество, которому доверяют.</span>
