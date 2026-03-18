@@ -1,0 +1,33 @@
+.textLinkDiv {
+  position: relative;
+  overflow: hidden;
+}
+
+.textLinkDiv span {
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.textLink1 {
+  display: flex;
+  align-items: center;
+}
+
+.textLink2 {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  transform: translateY(120%);
+  top: 0;
+  left: 0;
+}
+
+.textLinkDiv:hover .textLink1 {
+  transform: translateY(-120%);
+}
+
+.textLinkDiv:hover .textLink2 {
+  transform: translateY(0);
+}
