@@ -54,7 +54,7 @@ export default function AboutSection() {
         </div>
         <div className="w-full flex flex-col items-start justify-center gap-6 lg:gap-8 h-full">
           <FadingInImage
-            image="/projectsImages/prImg2.jpg"
+            image="/projectsOptimized/pr2.avif"
             alt="Hero Section"
             className="aspect-[4/3] min-h-[200px] sm:min-h-[280px] w-full"
           />
