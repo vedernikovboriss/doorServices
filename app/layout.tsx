@@ -6,7 +6,6 @@ import LenisProvider from './components/LenisProvider';
 import NavBar from './components/NavBar';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import ScrollToTop from './components/ScrollToTop';
-import ScrollTriggerReset from './components/ScrollTriggerReset';
 import { ViewTransitions } from 'next-view-transitions';
 import { TransitionManager } from './components/TransitionManager';
 import { DisableScrollRestoration } from './components/DisableScrollPosition';
@@ -42,7 +41,6 @@ export default function RootLayout({
           <ScrollProgressBar />
 
           <LenisProvider>
-            <ScrollTriggerReset />
             <DisableScrollRestoration />
             <ScrollToTop />
             <TransitionManager />
