@@ -57,7 +57,7 @@ const page = () => {
           <ButtonPrimary isDark={true}>Записаться</ButtonPrimary>
         </div>
 
-        <div className="pointer-events-none absolute right-0 w-[min(45vw,200px)] sm:w-[min(50vw,260px)] lg:w-auto opacity-25 sm:opacity-35 lg:opacity-100 -mr-2 sm:-mr-4 lg:mr-0">
+        <div className="pointer-events-none absolute bottom-0 lg:bottom-auto right-0 w-[min(45vw,200px)] sm:w-[min(50vw,260px)] lg:w-auto opacity-25 sm:opacity-35 lg:opacity-100 -mr-2 sm:-mr-4 lg:mr-0">
           <DoorSVG />
         </div>
       </section>

@@ -8,7 +8,7 @@ export default function MarqueeSection() {
   return (
     <div className="relative w-full py-4 bg-(--accent) overflow-hidden flex flex-col gap-4">
       <Image
-        className="absolute z-0 top-0 left-0 w-full h-full object-cover opacity-40"
+        className="absolute z-0 top-0 left-0 w-full h-full object-cover opacity-10"
         src="/texture1.avif"
         alt=""
         fill
