@@ -7,7 +7,6 @@ import NavBar from './components/NavBar';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import ScrollToTop from './components/ScrollToTop';
 import { ViewTransitions } from 'next-view-transitions';
-import { TransitionManager } from './components/TransitionManager';
 import { DisableScrollRestoration } from './components/DisableScrollPosition';
 
 const notoSans = Noto_Sans({
@@ -43,7 +42,7 @@ export default function RootLayout({
           <LenisProvider>
             <DisableScrollRestoration />
             <ScrollToTop />
-            <TransitionManager />
+
             {children}
           </LenisProvider>
         </body>

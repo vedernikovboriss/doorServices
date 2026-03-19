@@ -5,38 +5,32 @@ import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-type TagType = 'h1' | 'h2' | 'h3' | 'p' | 'span';
+type TagType = 'h1' | 'h2' | 'h3' | 'span' | 'p';
 
-interface HeadingAnimationProps {
+interface AnimatedTextProps {
   children: React.ReactNode;
   className?: string;
   as?: TagType;
 }
 
-const START_AT = 'top 80%'; // element hits 20% from bottom
-const RESIZE_DEBOUNCE_MS = 150;
-
-const AnimatedText: React.FC<HeadingAnimationProps> = ({
+const AnimatedText: React.FC<AnimatedTextProps> = ({
   children,
   className,
   as = 'h2',
 }) => {
   const headingRef = useRef<HTMLElement>(null);
-  const splitRef = useRef<InstanceType<typeof SplitText> | null>(null);
-  const triggerRef = useRef<ScrollTrigger | null>(null);
-  const hasAnimatedRef = useRef(false);
   const Tag = as;
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
+
     const el = headingRef.current;
     if (!el) return;
 
-    const build = () => {
-      splitRef.current?.revert();
-      splitRef.current = null;
+    let split: InstanceType<typeof SplitText> | null = null;
+    let trigger: ScrollTrigger | null = null;
 
-      let split: InstanceType<typeof SplitText> | null = null;
+    const run = () => {
       try {
         split = SplitText.create(el, {
           type: 'lines',
@@ -44,70 +38,55 @@ const AnimatedText: React.FC<HeadingAnimationProps> = ({
           mask: 'lines',
           autoSplit: true,
         });
-        splitRef.current = split;
-
-        if (split.lines?.length) {
-          gsap.set(split.lines, {
-            yPercent: hasAnimatedRef.current ? 0 : 100,
-            force3D: true,
-          });
-        }
       } catch {
-        split?.revert();
+        return;
       }
-    };
 
-    build();
-
-    const play = () => {
-      if (hasAnimatedRef.current) return;
-      const split = splitRef.current;
       if (!split?.lines?.length) return;
 
-      gsap.killTweensOf(split.lines);
-      gsap.to(split.lines, {
-        yPercent: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        stagger: 0.08,
-        force3D: true,
-        overwrite: true,
-        onComplete: () => {
-          hasAnimatedRef.current = true;
-        },
+      gsap.set(split.lines, { yPercent: 100, force3D: true });
+
+      let played = false;
+      const play = () => {
+        if (played || !split?.lines?.length) return;
+        played = true;
+        gsap.killTweensOf(split.lines);
+        gsap.to(split.lines, {
+          yPercent: 0,
+          duration: 0.85,
+          ease: 'power3.out',
+          stagger: 0.08,
+          force3D: true,
+        });
+      };
+
+      trigger = ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: play,
+      });
+
+      ScrollTrigger.refresh();
+      // Hero / top-of-page text: trigger may never fire onEnter until scroll.
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          play();
+        }
       });
     };
 
-    triggerRef.current?.kill();
-    triggerRef.current = ScrollTrigger.create({
-      trigger: el,
-      start: START_AT,
-      once: true,
-      onEnter: play,
-    });
-
-    let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
-    const onResize = () => {
-      if (resizeTimeout) clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        // Re-split after layout changes so line breaks stay correct.
-        build();
-        triggerRef.current?.refresh();
-        ScrollTrigger.refresh();
-      }, RESIZE_DEBOUNCE_MS);
-    };
-
-    window.addEventListener('resize', onResize, { passive: true });
+    requestAnimationFrame(run);
 
     return () => {
-      window.removeEventListener('resize', onResize);
-      if (resizeTimeout) clearTimeout(resizeTimeout);
-      triggerRef.current?.kill();
-      triggerRef.current = null;
-      splitRef.current?.revert();
-      splitRef.current = null;
+      trigger?.kill();
+      trigger = null;
+      split?.revert();
+      split = null;
     };
-  }, []);
+  }, [children]);
 
   return (
     <Tag ref={headingRef as any} className={className}>

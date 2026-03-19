@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import ButtonPrimary from './ButtonPrimary';
 import ContactSubinfo from './ContactSubinfo';
+import AnimatedText from './AnimatedText';
 
 const SERVICE_OPTIONS = [
   'Замер',
@@ -40,11 +41,13 @@ const CTA = ({ sectionClassName }: { sectionClassName?: string }) => {
           <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] lg:w-[170px] lg:h-[170px] shrink-0">
             <DoorSVG />
           </div>
-          <h3 className="h3">Оставьте Заявку</h3>
-          <p className="p-medium">
+          <AnimatedText as="h3" className="h3">
+            Оставьте Заявку
+          </AnimatedText>
+          <AnimatedText as="p" className="p-medium">
             Мы свяжемся с вами в ближайшее время и обсудим детали вашего
             запроса.
-          </p>
+          </AnimatedText>
         </div>
         <div className="w-full min-h-0 h-s rounded-sm flex flex-col gap-6">
           <form onSubmit={handleSubmit} className="flex flex-col gap-8">

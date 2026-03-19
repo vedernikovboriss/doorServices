@@ -15,7 +15,6 @@ import SplitText from 'gsap/SplitText';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-
 export default function Home() {
   return (
     <main className="w-full">

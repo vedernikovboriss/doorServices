@@ -48,11 +48,11 @@ const page = () => {
           Хочешь освоить достойную профессию установщика межкомнатных дверей?
         </AnimatedText>
 
-        <p className="p-medium relative z-10l">
+        <AnimatedText as="p" className="p-medium relative z-10l">
           Запишитесь на обучение. Мы научим вас устанавливать двери быстро и
           качественно, чтобы вы могли начать зарабатывать уже через несколько
           дней.
-        </p>
+        </AnimatedText>
         <div className="relative z-10">
           <ButtonPrimary isDark={true}>Записаться</ButtonPrimary>
         </div>
@@ -86,10 +86,10 @@ const page = () => {
           <AnimatedText as="h2" className="h3">
             Что вы узнаете за период обучения
           </AnimatedText>
-          <p className="p-medium">
+          <AnimatedText as="p" className="p-medium">
             За период обучения вы узнаете все, что нужно для начала работы в
             качестве установщика дверей.
-          </p>
+          </AnimatedText>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
           {whatYouWillLearn.map((item, index) => {
@@ -120,9 +120,9 @@ const page = () => {
           <AnimatedText as="h2" className="h3">
             Сколько зарабатывают установщики дверей?{' '}
           </AnimatedText>
-          <p className="p-medium">
+          <AnimatedText as="p" className="p-medium">
             Сколько можнnpо зарабатывать, освоив профессию
-          </p>
+          </AnimatedText>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {howMuchCanYouEarn.map((item, index) => (
@@ -143,13 +143,13 @@ const page = () => {
         <div className="w-full flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-8">
           <AnimatedText className="h2">Почему Мы?</AnimatedText>
           <div className="flex flex-col gap-6 lg:gap-8 w-full lg:max-w-xl">
-            <p className="p-medium">
+            <AnimatedText as="p" className="p-medium">
               Мы не просто преподаём теорию — обучаем исключительно тому, что
               действительно пригодится при выполнении реальных заказов. Наш путь
               — от самостоятельной работы мастером до создания собственной
               команды и бренда — позволяет делиться только проверенными,
               практическими знаниями, которые приносят результат.
-            </p>
+            </AnimatedText>
             <ButtonPrimary isDark={true}>Записаться</ButtonPrimary>
           </div>
         </div>

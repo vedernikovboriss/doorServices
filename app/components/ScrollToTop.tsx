@@ -1,28 +1,26 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenis } from 'lenis/react';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 export default function ScrollToTop() {
   const pathname = usePathname();
   const lenis = useLenis();
 
   useEffect(() => {
-    if (lenis) {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          lenis?.scrollTo(0, { immediate: true });
-          ScrollTrigger.refresh();
-          ScrollTrigger.update();
-        });
-      });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'auto' });
-      ScrollTrigger.refresh();
-      ScrollTrigger.update();
-    }
+    lenis?.stop();
+
+    window.scrollTo(0, 0);
+    lenis?.scrollTo(0, { immediate: true });
+
+    const raf = requestAnimationFrame(() => {
+      ScrollTrigger.refresh(true);
+      lenis?.start();
+    });
+
+    return () => cancelAnimationFrame(raf);
   }, [pathname, lenis]);
 
   return null;
