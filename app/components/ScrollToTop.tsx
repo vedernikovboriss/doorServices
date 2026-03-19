@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useLenis } from 'lenis/react';
 
 export default function ScrollToTop() {
@@ -12,12 +12,19 @@ export default function ScrollToTop() {
   useEffect(() => {
     lenis?.stop();
 
-    window.scrollTo(0, 0);
-    lenis?.scrollTo(0, { immediate: true });
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true, duration: 0 });
+    } else {
+      window.scrollTo(0, 0);
+    }
 
     const raf = requestAnimationFrame(() => {
-      ScrollTrigger.refresh(true);
-      lenis?.start();
+      try {
+        ScrollTrigger.refresh();
+        ScrollTrigger.update();
+      } finally {
+        lenis?.start();
+      }
     });
 
     return () => cancelAnimationFrame(raf);

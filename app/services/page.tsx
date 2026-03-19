@@ -15,7 +15,7 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <main className="bg-(--white) pt-16">
-      <ServicesSection />
+      <ServicesSection headingAs="h1" />
       <CTA />
       <Footer />
     </main>

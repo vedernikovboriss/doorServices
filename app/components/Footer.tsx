@@ -10,7 +10,7 @@ export default function Footer() {
     { label: 'Услуги', href: '/services' },
     { label: 'Проекты', href: '/projects' },
     { label: 'Вакансии', href: '/vacancies' },
-    { label: 'Образование', href: '/education' },
+    { label: 'Обучение', href: '/teaching' },
     { label: 'Контакты', href: '/contacts' },
   ];
   return (

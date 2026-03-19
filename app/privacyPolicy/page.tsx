@@ -1,6 +1,12 @@
 import React from 'react';
 import Footer from '../components/Footer';
 
+export const metadata = {
+  title: 'Политика конфиденциальности | Монтаж межкомнатных дверей',
+  description:
+    'Политика конфиденциальности: как мы собираем, используем и защищаем ваши данные, а также описание cookie.',
+};
+
 const page = () => {
   return (
     <main className="bg-(--white) pt-16">
@@ -9,16 +15,16 @@ const page = () => {
           <span className="subtitle text-(--accent)">
             (Последнее обновление: 14.03.2026)
           </span>
-          <h2 className="h3">
+          <h1 className="h3">
             Компания «Технический отдел» уделяет особое внимание защите ваших
             данных. В этой политике конфиденциальности описано, какие данные мы
             собираем, как используем и храним их, а также какие меры принимаем
             для их защиты.
-          </h2>
+          </h1>
         </div>
         <div className="flex flex-col gap-8 lg:gap-16">
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Что такое cookie?</h3>
+            <h2 className="h3">Что такое cookie?</h2>
             <p className="p-medium">
               <b>Cookie</b> — это небольшие текстовые файлы, которые сайт
               сохраняет на вашем устройстве при посещении. Они нужны для
@@ -28,7 +34,7 @@ const page = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Какие cookie мы используем?</h3>
+            <h2 className="h3">Какие cookie мы используем?</h2>
             <ul className="list-disc pl-4 sm:pl-6 p-medium flex flex-col gap-2 text-sm sm:text-base">
               <li>
                 <b>Технические cookie</b> — обеспечивают базовую работу сайта:
@@ -49,7 +55,7 @@ const page = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Для чего мы используем cookie?</h3>
+            <h2 className="h3">Для чего мы используем cookie?</h2>
             <ul className="list-disc pl-4 sm:pl-6 p-medium flex flex-col gap-2 text-sm sm:text-base">
               <li>Обеспечение стабильной и корректной работы сайта</li>
               <li>
@@ -63,7 +69,7 @@ const page = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Управление cookie</h3>
+            <h2 className="h3">Управление cookie</h2>
             <p className="p-medium">
               В большинстве браузеров cookie разрешены по умолчанию. Вы можете в
               любой момент изменить настройки: ограничить приём cookie,
@@ -74,7 +80,7 @@ const page = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Согласие на использование cookie</h3>
+            <h2 className="h3">Согласие на использование cookie</h2>
             <p className="p-medium">
               Использование нашего сайта означает ваше согласие на применение
               cookie в соответствии с настоящей политикой конфиденциальности.

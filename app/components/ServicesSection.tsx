@@ -6,12 +6,18 @@ import TextLink from './TextLink/TextLink';
 import { ArrowUpRightIcon } from 'lucide-react';
 import AnimatedText from './AnimatedText';
 
-export default function ServicesSection() {
+type HeadingAs = 'h1' | 'h2' | 'h3' | 'span' | 'p';
+
+export default function ServicesSection({
+  headingAs = 'h2',
+}: {
+  headingAs?: HeadingAs;
+}) {
   return (
     <section className="section-base-padding min-h-0 lg:min-h-screen bg-(--white) flex gap-8 lg:gap-16 flex-col items-center">
       <div className="flex flex-col w-full items-start justify-between gap-6 lg:gap-8">
         <div className="flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-8 w-full">
-          <AnimatedText as="h2" className="h2">
+          <AnimatedText as={headingAs} className="h2">
             Наши Услуги
           </AnimatedText>
           <span className="subtitle text-(--accent)">

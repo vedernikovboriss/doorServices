@@ -21,6 +21,12 @@ import {
 } from '../data/educationInfo';
 import CTA from '../components/CTA';
 
+export const metadata = {
+  title: 'Обучение | Монтаж межкомнатных дверей',
+  description:
+    'Школа монтажа межкомнатных дверей: обучение навыкам, теория и практика. Помогаем освоить профессию установщика и начать зарабатывать.',
+};
+
 const whatYouWillLearnIcons = [
   Users, // Знакомство с мастерами
   TrendingUp, // Ситуация на рынке

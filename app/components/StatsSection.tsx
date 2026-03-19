@@ -58,30 +58,44 @@ export const StatsItem = ({
     const numberEl = numberRef.current;
     if (!triggerEl || !numberEl) return;
 
-    // Start from 0 so the animation is always visible.
     const setText = gsap.quickSetter(numberEl, 'textContent');
     setText(`0${subvalue}`);
 
     const obj = { current: 0 };
+    let played = false;
+
+    const play = () => {
+      if (played) return;
+      played = true;
+      gsap.killTweensOf(obj);
+      gsap.to(obj, {
+        current: safeValue,
+        duration: 1.4,
+        ease: 'expo.out',
+        overwrite: true,
+        onUpdate: () => {
+          setText(`${Math.round(obj.current)}${subvalue}`);
+        },
+        onComplete: () => {
+          setText(`${Math.round(safeValue)}${subvalue}`);
+        },
+      });
+    };
 
     const trigger = ScrollTrigger.create({
       trigger: triggerEl,
-      start: 'top 80%', // when the block reaches 20% from bottom
+      start: 'top 85%',
       once: true,
-      onEnter: () => {
-        gsap.to(obj, {
-          current: safeValue,
-          duration: 1.4,
-          ease: 'expo.out',
-          overwrite: true,
-          onUpdate: () => {
-            setText(`${Math.round(obj.current)}${subvalue}`);
-          },
-          onComplete: () => {
-            setText(`${Math.round(safeValue)}${subvalue}`);
-          },
-        });
-      },
+      onEnter: play,
+    });
+
+    ScrollTrigger.refresh();
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+      const rect = triggerEl.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        play();
+      }
     });
 
     return () => {

@@ -13,7 +13,7 @@ const navLinks = [
   { label: 'Услуги', href: '/services' },
   { label: 'Проекты', href: '/projects' },
   { label: 'Вакансии', href: '/vacancies' },
-  { label: 'Обучение', href: '/education' },
+  { label: 'Обучение', href: '/teaching' },
   { label: 'Связаться', href: '/contacts', icon: true },
 ];
 

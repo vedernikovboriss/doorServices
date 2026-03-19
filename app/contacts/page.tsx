@@ -2,6 +2,12 @@ import React from 'react';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 
+export const metadata = {
+  title: 'Контакты | Монтаж межкомнатных дверей',
+  description:
+    'Свяжитесь с нами по телефону или через форму заявки. Мы поможем с замером, монтажом межкомнатных дверей и ответим на вопросы.',
+};
+
 const page = () => {
   return (
     <main className="bg-(--white) pt-16">

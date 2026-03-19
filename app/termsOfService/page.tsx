@@ -15,16 +15,16 @@ export default function TermsOfServicePage() {
           <span className="subtitle text-(--accent)">
             (Последнее обновление: 14.03.2026)
           </span>
-          <h2 className="h3">
+          <h1 className="h3">
             Настоящие условия использования регулируют порядок работы с сайтом
             компании «Технический отдел», заказ услуг по замеру и монтажу
             межкомнатных дверей, а также ваши права и обязанности при
             использовании ресурса.
-          </h2>
+          </h1>
         </div>
         <div className="flex flex-col gap-8 lg:gap-16">
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Принятие условий</h3>
+            <h2 className="h3">Принятие условий</h2>
             <p className="p-medium">
               Использование данного сайта означает ваше согласие с настоящими
               условиями. Если вы не согласны с какими-либо пунктами, пожалуйста,
@@ -36,7 +36,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Использование сайта и контента</h3>
+            <h2 className="h3">Использование сайта и контента</h2>
             <p className="p-medium">
               Весь контент сайта (тексты, изображения, логотипы, структура
               страниц) предназначен для информирования о наших услугах и
@@ -49,7 +49,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Заказ услуг и заявки</h3>
+            <h2 className="h3">Заказ услуг и заявки</h2>
             <ul className="list-disc pl-4 sm:pl-6 p-medium flex flex-col gap-2 text-sm sm:text-base">
               <li>
                 Заявка, оставленная через сайт (форма обратной связи, телефон,
@@ -76,7 +76,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Ограничение ответственности</h3>
+            <h2 className="h3">Ограничение ответственности</h2>
             <p className="p-medium">
               Мы прилагаем все усилия к тому, чтобы информация на сайте была
               актуальной и точной. Тем не менее «Технический отдел» не несёт
@@ -89,7 +89,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Ссылки на сторонние ресурсы</h3>
+            <h2 className="h3">Ссылки на сторонние ресурсы</h2>
             <p className="p-medium">
               На сайте могут присутствовать ссылки на сторонние сайты (например,
               партнёров или производителей). Мы не контролируем содержание и
@@ -100,7 +100,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="h3">Контакты</h3>
+            <h2 className="h3">Контакты</h2>
             <p className="p-medium">
               По вопросам, связанным с условиями использования, заказом услуг
               или работой сайта, вы можете связаться с нами по контактам,
