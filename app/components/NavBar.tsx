@@ -70,7 +70,7 @@ export default function NavBar() {
         <TextLink href="/services">Услуги</TextLink>
         <TextLink href="/projects">Проекты</TextLink>
         <TextLink href="/vacancies">Вакансии</TextLink>
-        <TextLink href="/education">Обучение</TextLink>
+        <TextLink href="/teaching">Обучение</TextLink>
         <TextLink href="/contacts">
           Связаться
           <ArrowUpRight className="w-5 h-5" />
