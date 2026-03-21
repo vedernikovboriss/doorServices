@@ -29,36 +29,29 @@ export default function AboutSection() {
       </div>
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
         <div className="w-full flex flex-col items-start justify-center gap-6 lg:gap-8 h-full">
-          <p className="p-medium">
+          <AnimatedText as="p" className="p-medium">
             Мы понимаем, что правильная установка межкомнатных дверей — это не
             только результат работы, но и залог их долговечной и надежной
             эксплуатации. Наша команда профессионалов уделяет внимание каждой
             детали процесса — от тщательной подготовки проема и подбора
             качественной фурнитуры до аккуратного и продуманного монтажа с
             учетом всех технических нюансов.
-          </p>
-          <p className="p-small">
+          </AnimatedText>
+          <AnimatedText as="p" className="p-medium">
             За более чем 100 успешно реализованных проектов мы приобрели
             обширный опыт и глубокие знания во всех аспектах дверного монтажа.
             Наши мастера — эксперты своего дела с многолетней практикой, что
             позволяет нам браться за задачи любой сложности и гарантировать
             высокий стандарт качества.
-          </p>
-          <p className="p-small">
-            Мы постоянно совершенствуем свои навыки, используем современные
-            инструменты и материалы, чтобы каждая дверь радовала своим видом и
-            долговечностью. Сотрудничая с нами, вы можете быть уверены, что все
-            работы будут выполнены в срок, с учетом особенностей вашего
-            интерьера и ваших индивидуальных пожеланий.
-          </p>
+          </AnimatedText>
 
           <ButtonPrimary isDark={true}>Заказать услугу</ButtonPrimary>
         </div>
         <div className="w-full flex flex-col items-start justify-center gap-6 lg:gap-8 h-full">
           <FadingInImage
-            image="/projectsOptimized/pr2.avif"
-            alt="Hero Section"
-            className="aspect-[4/3] min-h-[200px] sm:min-h-[280px] w-full"
+            image="/projectsOptimized/pr4.avif"
+            alt="About Section"
+            className="aspect-4/3 min-h-[200px] sm:min-h-[280px] w-full"
           />
           <AboutAttentionReveal items={aboutItems} />
         </div>

@@ -5,6 +5,9 @@ import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
+// ✅ Module level — runs once, not on every mount
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
 type TagType = 'h1' | 'h2' | 'h3' | 'span' | 'p';
 
 interface AnimatedTextProps {
@@ -22,65 +25,77 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   const Tag = as;
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, SplitText);
-
     const el = headingRef.current;
     if (!el) return;
 
     let split: InstanceType<typeof SplitText> | null = null;
     let trigger: ScrollTrigger | null = null;
+    let played = false;
+    let raf1: number;
+    let raf2: number;
 
-    const run = () => {
-      try {
-        split = SplitText.create(el, {
-          type: 'lines',
-          linesClass: 'heading-line',
-          mask: 'lines',
-          autoSplit: true,
+    raf1 = requestAnimationFrame(() => {
+      // ✅ Second frame ensures Lenis has ticked and layout is settled
+      raf2 = requestAnimationFrame(() => {
+        try {
+          split = SplitText.create(el, {
+            type: 'lines',
+            linesClass: 'heading-line',
+            mask: 'lines',
+            autoSplit: true,
+            onSplit() {
+              // ✅ Fires on every resize resplit — keeps hidden state correct
+              if (split?.lines?.length) {
+                gsap.set(split.lines, { yPercent: 100, force3D: true });
+              }
+            },
+          });
+        } catch {
+          return;
+        }
+
+        if (!split?.lines?.length) return;
+
+        gsap.set(split.lines, { yPercent: 100, force3D: true });
+
+        const play = () => {
+          if (played || !split?.lines?.length) return;
+          played = true;
+          gsap.to(split.lines, {
+            yPercent: 0,
+            duration: 0.85,
+            ease: 'power3.out',
+            stagger: 0.08,
+            force3D: true,
+            // ✅ Prevents stale transforms surviving a ScrollTrigger refresh
+            invalidateOnRefresh: true,
+          });
+        };
+
+        trigger = ScrollTrigger.create({
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+          onEnter: play,
         });
-      } catch {
-        return;
-      }
 
-      if (!split?.lines?.length) return;
-
-      gsap.set(split.lines, { yPercent: 100, force3D: true });
-
-      let played = false;
-      const play = () => {
-        if (played || !split?.lines?.length) return;
-        played = true;
-        gsap.killTweensOf(split.lines);
-        gsap.to(split.lines, {
-          yPercent: 0,
-          duration: 0.85,
-          ease: 'power3.out',
-          stagger: 0.08,
-          force3D: true,
-        });
-      };
-
-      trigger = ScrollTrigger.create({
-        trigger: el,
-        start: 'top 85%',
-        once: true,
-        onEnter: play,
-      });
-
-      ScrollTrigger.refresh();
-      // Hero / top-of-page text: trigger may never fire onEnter until scroll.
-      requestAnimationFrame(() => {
         ScrollTrigger.refresh();
+
+        // ✅ In-viewport check for hero / above-fold text
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.85) {
           play();
         }
       });
-    };
-
-    requestAnimationFrame(run);
+    });
 
     return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+      // ✅ Kill tweens before revert so GSAP doesn't tween detached nodes
+      if (split?.lines?.length) {
+        gsap.killTweensOf(split.lines);
+      }
       trigger?.kill();
       trigger = null;
       split?.revert();

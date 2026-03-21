@@ -47,18 +47,15 @@ const page = () => {
           <h1 className="h2 text-(--black)">Обучение</h1>
         </div>
 
-        <AnimatedText
-          as="h2"
-          className="h3 relative z-10 max-w-full lg:max-w-[min(100%,52rem)]"
-        >
+        <h2 className="h3 relative z-10 max-w-full lg:max-w-[min(100%,52rem)]">
           Хочешь освоить достойную профессию установщика межкомнатных дверей?
-        </AnimatedText>
+        </h2>
 
-        <AnimatedText as="p" className="p-medium relative z-10l">
+        <p className="p-medium relative z-10l">
           Запишитесь на обучение. Мы научим вас устанавливать двери быстро и
           качественно, чтобы вы могли начать зарабатывать уже через несколько
           дней.
-        </AnimatedText>
+        </p>
         <div className="relative z-10">
           <ButtonPrimary isDark={true}>Записаться</ButtonPrimary>
         </div>
@@ -127,7 +124,7 @@ const page = () => {
             Сколько зарабатывают установщики дверей?{' '}
           </AnimatedText>
           <AnimatedText as="p" className="p-medium">
-            Сколько можнnpо зарабатывать, освоив профессию
+            Сколько можно зарабатывать, освоив профессию
           </AnimatedText>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

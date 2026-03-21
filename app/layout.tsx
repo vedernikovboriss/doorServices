@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
 // @ts-ignore: Importing global CSS without type declarations
 import '@/app/globals.css';
-import LenisProvider from './components/LenisProvider';
+import LenisProvider from './LenisProvider';
 import NavBar from './components/NavBar';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import ScrollToTop from './components/ScrollToTop';
