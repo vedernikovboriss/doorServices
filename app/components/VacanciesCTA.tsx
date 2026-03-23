@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import ButtonPrimary from './ButtonPrimary';
 import ContactSubinfo from './ContactSubinfo';
 import { vacanciesData } from '../data/vacancies';
+import AnimatedText from './AnimatedText';
 
 const inputClass =
   'w-full px-4 py-3 rounded-sm bg-white text-(--black) placeholder:opacity-50 focus:outline-none transition-colors';
@@ -26,7 +27,7 @@ const VacanciesCTA = ({ sectionClassName }: { sectionClassName?: string }) => {
 
   return (
     <section
-      id="vacancy-apply-form"
+      id="cta-form"
       className={`section-base-padding min-h-0 lg:min-h-screen bg-(--white) flex flex-col gap-8 lg:gap-16 items-start justify-start ${sectionClassName ?? ''}`}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full">
@@ -34,11 +35,13 @@ const VacanciesCTA = ({ sectionClassName }: { sectionClassName?: string }) => {
           <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] lg:w-[170px] lg:h-[170px] shrink-0">
             <DoorSVG />
           </div>
-          <h3 className="h3">Откликнуться на вакансию</h3>
-          <p className="p-medium">
+          <AnimatedText as="h3" className="h3">
+            Откликнуться на вакансию
+          </AnimatedText>
+          <AnimatedText as="p" className="p-medium">
             Заполните форму. Мы рассмотрим вашу заявку и свяжемся с вами в
             ближайшее время.
-          </p>
+          </AnimatedText>
         </div>
         <div className="w-full min-h-0 rounded-sm flex flex-col gap-6">
           <form onSubmit={handleSubmit} className="flex flex-col gap-8">
@@ -91,18 +94,6 @@ const VacanciesCTA = ({ sectionClassName }: { sectionClassName?: string }) => {
                     </option>
                   ))}
                 </select>
-              </label>
-              <label className="flex flex-col gap-1">
-                <span className="text-sm opacity-70">
-                  Резюме (форматы: .pdf, .doc, .docx)
-                </span>
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  onChange={(e) => setResume(e.target.files?.[0] ?? null)}
-                  className={inputClass}
-                  required
-                />
               </label>
               <label className="flex flex-col gap-1">
                 <span className="text-sm opacity-70">

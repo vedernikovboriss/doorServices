@@ -9,11 +9,6 @@ import StatsSection from './components/StatsSection';
 import HeroSec2 from './components/HeroSec2';
 import HeroSection from './components/HeroSection';
 import MarqueeSection from './components/MarqueeSection';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import SplitText from 'gsap/SplitText';
-
-gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function Home() {
   return (
@@ -24,9 +19,8 @@ export default function Home() {
       <ServicesSection />
       <ProjectsOverviewSection />
       <CTA />
-      <FAQSection />
       <MarqueeSection />
-      <PartnersSection />
+      <FAQSection />
       <Footer />
     </main>
   );

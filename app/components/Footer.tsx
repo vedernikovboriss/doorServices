@@ -14,14 +14,14 @@ export default function Footer() {
     { label: 'Контакты', href: '/contacts' },
   ];
   return (
-    <footer className="section-base-padding text-background bg-(--gray) flex flex-col gap-12 lg:gap-48 pb-8! pt-24! relative isolate overflow-hidden">
+    <footer className="section-base-padding text-background bg-(--black)/95 flex flex-col gap-12 lg:gap-48 pb-8! pt-24! relative isolate overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-8 rounded-b-lg bg-background z-3" />
       <div className="w-full h-full absolute top-0 left-0 z-0 pointer-events-none opacity-50 overflow-hidden">
         <Image src="/texture1.avif" alt="" fill className="object-cover" />
       </div>
       <div className="absolute z-0 top-0 left-0 w-full h-full overflow-hidden flex flex-col gap-4 justify-center opacity-10">
         <div className="w-2/3 h-full bg-(--white) border border-(--white)/20 rounded-xl rotate-y-15 -rotate-z-15" />
-        <div className="w-2/3 h-full bg-[#898989] border border-(--white)/20 rounded-xl rotate-y-15 -rotate-z-15" />
+        <div className="w-2/3 h-full bg-(--gray) border border-(--white)/20 rounded-xl rotate-y-15 -rotate-z-15" />
         <div className="w-2/3 h-full bg-(--black) border border-(--white)/20 rounded-xl rotate-y-15 -rotate-z-15" />
         <div className="w-2/3 h-full bg-(--accent) border border-(--white)/20 rounded-xl rotate-y-15 -rotate-z-15" />
       </div>
@@ -53,13 +53,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               <TextLink href="">
                 {' '}
-                YouTube
-                <ArrowUpRightIcon className="w-4 h-4" />
-              </TextLink>
-
-              <TextLink href="">
-                {' '}
-                ВКонтакте
+                Макс
                 <ArrowUpRightIcon className="w-4 h-4" />
               </TextLink>
 

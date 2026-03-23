@@ -20,6 +20,7 @@ import {
   whyUs,
 } from '../data/educationInfo';
 import CTA from '../components/CTA';
+import FadeInOnScroll from '../components/FadeInOnScroll';
 
 export const metadata = {
   title: 'Обучение | Монтаж межкомнатных дверей',
@@ -71,13 +72,14 @@ const page = () => {
         </AnimatedText>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {benefits.map((benefit, index) => (
-            <div
+            <FadeInOnScroll
               key={index}
-              className="flex flex-col justify-between gap-8 lg:gap-16 p-6 sm:p-8 bg-white rounded-sm"
+              delay={index * 0.05}
+              className="flex flex-col justify-between gap-8 lg:gap-32 p-6 sm:p-8 bg-white rounded-sm"
             >
-              <h3 className="card-title">{benefit.title}</h3>
+              <h3 className="card-title">{benefit.title} </h3>
               <p className="p-small">{benefit.description}</p>
-            </div>
+            </FadeInOnScroll>
           ))}
         </div>
       </section>
@@ -98,7 +100,11 @@ const page = () => {
           {whatYouWillLearn.map((item, index) => {
             const Icon = whatYouWillLearnIcons[index];
             return (
-              <div key={index} className="flex flex-col gap-2">
+              <FadeInOnScroll
+                key={index}
+                delay={index * 0.04}
+                className="flex flex-col gap-2"
+              >
                 <div className="w-12 h-12 bg-(--accent) rounded-sm flex items-center justify-center shrink-0">
                   {Icon && (
                     <Icon
@@ -109,7 +115,7 @@ const page = () => {
                 </div>
                 <span className="h4">{item.title}</span>
                 <p className="p-small">{item.description}</p>
-              </div>
+              </FadeInOnScroll>
             );
           })}
         </div>
@@ -129,16 +135,19 @@ const page = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {howMuchCanYouEarn.map((item, index) => (
-            <div
+            <FadeInOnScroll
               key={index}
+              delay={index * 0.05}
               className="flex flex-col justify-between gap-8 sm:gap-16 lg:gap-32 p-6 sm:p-8 bg-white rounded-sm"
             >
               <h3 className="card-title">{item.title}</h3>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-4">
                 <span className="numbers-title">{item.salary}</span>
-                <span className="p-small">тыс. ₽/мес</span>
+                <span className="p-small text-(--accent) font-semibold!">
+                  тыс. ₽/мес
+                </span>
               </div>
-            </div>
+            </FadeInOnScroll>
           ))}
         </div>
       </section>
@@ -157,7 +166,7 @@ const page = () => {
           </div>
         </div>
         <div className="grid w-full grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-4">
-          <div className="relative min-h-[200px] sm:min-h-[280px] lg:min-h-0 lg:row-span-2 lg:col-start-1 lg:row-start-1 rounded-sm overflow-hidden bg-(--accent)/10 flex items-center justify-center p-4">
+          <div className="relative min-h-[200px] sm:min-h-[280px] lg:min-h-0 lg:row-span-2 lg:col-start-1 lg:row-start-1 rounded-sm overflow-hidden bg-(--gray) flex items-center justify-center p-4">
             <DoorSVG2 />
           </div>
           {whyUs.map((item, index) => {
@@ -168,13 +177,14 @@ const page = () => {
               'lg:col-start-3 lg:row-start-2',
             ][index];
             return (
-              <div
+              <FadeInOnScroll
                 key={index}
+                delay={index * 0.05}
                 className={`flex flex-col gap-8 lg:gap-16 justify-between p-6 sm:p-8 bg-white rounded-sm ${lgGrid}`}
               >
                 <h3 className="card-title">{item.title}</h3>
                 <p className="p-small">{item.description}</p>
-              </div>
+              </FadeInOnScroll>
             );
           })}
         </div>
@@ -249,93 +259,93 @@ function DoorSVG() {
 function DoorSVG2() {
   return (
     <svg
-      className="w-full max-w-[min(100%,420px)] lg:max-w-full h-auto max-h-[280px] sm:max-h-[360px] lg:max-h-none"
       width="500"
       height="500"
-      viewBox="0 0 1135 1832"
+      viewBox="0 0 541 1380"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g filter="url(#filter0_d_271_187)">
-        <path d="M989 0.390625L129 688.891V1765.89" stroke="var(--black)" />
-        <path d="M1130.5 58.3906L270.5 746.891V1823.89" stroke="var(--black)" />
-        <path
-          d="M134 1204.89H216C226.77 1204.89 235.5 1213.62 235.5 1224.39V1459.39C235.5 1470.16 226.77 1478.89 216 1478.89H134C131.515 1478.89 129.5 1476.88 129.5 1474.39V1209.39C129.5 1206.91 131.515 1204.89 134 1204.89Z"
-          stroke="var(--black)"
-        />
-        <path
-          d="M4.5 1179.26C4.5 1164.42 20.4198 1155.02 33.416 1162.18L108.173 1203.4C109.608 1204.19 110.5 1205.7 110.5 1207.34V1470.68C110.5 1474.15 106.73 1476.32 103.73 1474.57L14.165 1422.25C8.17987 1418.75 4.50007 1412.34 4.5 1405.41V1179.26Z"
-          stroke="var(--black)"
-        />
-        <rect
-          x="111"
-          y="1215.39"
-          width="18"
-          height="120"
-          rx="9"
-          fill="var(--black)"
-        />
-        <rect
-          x="111"
-          y="1349.39"
-          width="18"
-          height="120"
-          rx="9"
-          fill="var(--black)"
-        />
-        <path
-          d="M22 1284.89C23.3766 1284.89 24.7457 1285.97 25.7998 1287.99C26.8412 1289.99 27.5 1292.78 27.5 1295.89C27.5 1299 26.8412 1301.79 25.7998 1303.79C24.7457 1305.81 23.3766 1306.89 22 1306.89C20.6234 1306.89 19.2543 1305.81 18.2002 1303.79C17.1588 1301.79 16.5 1299 16.5 1295.89C16.5 1292.78 17.1588 1289.99 18.2002 1287.99C19.2543 1285.97 20.6234 1284.89 22 1284.89Z"
-          stroke="var(--black)"
-        />
-        <path
-          d="M27 1181.89C28.3766 1181.89 29.7457 1182.97 30.7998 1184.99C31.8412 1186.99 32.5 1189.78 32.5 1192.89C32.5 1196 31.8412 1198.79 30.7998 1200.79C29.7457 1202.81 28.3766 1203.89 27 1203.89C25.6234 1203.89 24.2543 1202.81 23.2002 1200.79C22.1588 1198.79 21.5 1196 21.5 1192.89C21.5 1189.78 22.1588 1186.99 23.2002 1184.99C24.2543 1182.97 25.6234 1181.89 27 1181.89Z"
-          stroke="var(--black)"
-        />
-        <path
-          d="M27 1386.89C28.3766 1386.89 29.7457 1387.97 30.7998 1389.99C31.8412 1391.99 32.5 1394.78 32.5 1397.89C32.5 1401 31.8412 1403.79 30.7998 1405.79C29.7457 1407.81 28.3766 1408.89 27 1408.89C25.6234 1408.89 24.2543 1407.81 23.2002 1405.79C22.1588 1403.79 21.5 1401 21.5 1397.89C21.5 1394.78 22.1588 1391.99 23.2002 1389.99C24.2543 1387.97 25.6234 1386.89 27 1386.89Z"
-          stroke="var(--black)"
-        />
-        <circle cx="191" cy="1449.39" r="14.5" stroke="var(--black)" />
-        <circle cx="191" cy="1244.39" r="14.5" stroke="var(--black)" />
-        <circle cx="206" cy="1342.39" r="14.5" stroke="var(--black)" />
-      </g>
-      <defs>
-        <filter
-          id="filter0_d_271_187"
-          x="0"
-          y="0"
-          width="1134.81"
-          height="1831.89"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_271_187"
-          />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect1_dropShadow_271_187"
-            result="shape"
-          />
-        </filter>
-      </defs>
+      <path
+        d="M386 0.787109L1 302.287V1379.29"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <path
+        d="M540 0.787109L155 302.287V1379.29"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <path
+        d="M151 809.787H69C58.5066 809.787 50 818.294 50 828.787V1063.79C50 1074.28 58.5066 1082.79 69 1082.79H151C153.209 1082.79 155 1081 155 1078.79V813.787C155 811.578 153.209 809.787 151 809.787Z"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <path
+        d="M280 783.654C280 769.194 264.488 760.033 251.825 767.016L177.068 808.237C175.792 808.941 175 810.283 175 811.74V1075.08C175 1078.16 178.351 1080.09 181.018 1078.53L270.583 1026.21C276.415 1022.81 280 1016.56 280 1009.81V783.654Z"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <rect
+        width="18"
+        height="120"
+        rx="9"
+        transform="matrix(-1 0 0 1 174 819.787)"
+        fill="var(--white)"
+      />
+      <rect
+        width="18"
+        height="120"
+        rx="9"
+        transform="matrix(-1 0 0 1 174 953.787)"
+        fill="var(--white)"
+      />
+      <path
+        d="M263 889.787C261.904 889.787 260.666 890.658 259.644 892.618C258.646 894.529 258 897.239 258 900.287C258 903.335 258.646 906.045 259.644 907.956C260.666 909.916 261.904 910.787 263 910.787C264.096 910.787 265.334 909.916 266.356 907.956C267.354 906.045 268 903.335 268 900.287C268 897.239 267.354 894.529 266.356 892.618C265.334 890.658 264.096 889.787 263 889.787Z"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <path
+        d="M258 786.787C256.904 786.787 255.666 787.658 254.644 789.618C253.646 791.529 253 794.239 253 797.287C253 800.335 253.646 803.045 254.644 804.956C255.666 806.916 256.904 807.787 258 807.787C259.096 807.787 260.334 806.916 261.356 804.956C262.354 803.045 263 800.335 263 797.287C263 794.239 262.354 791.529 261.356 789.618C260.334 787.658 259.096 786.787 258 786.787Z"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <path
+        d="M258 991.787C256.904 991.787 255.666 992.658 254.644 994.618C253.646 996.529 253 999.239 253 1002.29C253 1005.33 253.646 1008.04 254.644 1009.96C255.666 1011.92 256.904 1012.79 258 1012.79C259.096 1012.79 260.334 1011.92 261.356 1009.96C262.354 1008.04 263 1005.33 263 1002.29C263 999.239 262.354 996.529 261.356 994.618C260.334 992.658 259.096 991.787 258 991.787Z"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <circle
+        cx="15"
+        cy="15"
+        r="14"
+        transform="matrix(-1 0 0 1 109 1038.79)"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <circle
+        cx="15"
+        cy="15"
+        r="14"
+        transform="matrix(-1 0 0 1 109 833.787)"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <circle
+        cx="15"
+        cy="15"
+        r="14"
+        transform="matrix(-1 0 0 1 94 931.787)"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
+      <line
+        x1="2"
+        y1="301.787"
+        x2="155"
+        y2="301.787"
+        stroke="var(--white)"
+        strokeWidth="2"
+      />
     </svg>
   );
 }

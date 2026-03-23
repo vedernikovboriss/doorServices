@@ -3,17 +3,13 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { ensureGsapPlugins } from '../lib/gsap';
 
-export default function AboutAttentionReveal({
-  items,
-}: {
-  items: string[];
-}) {
+ensureGsapPlugins();
+export default function AboutAttentionReveal({ items }: { items: string[] }) {
   const attentionRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const root = attentionRef.current;
     if (!root) return;
 
@@ -68,4 +64,3 @@ export default function AboutAttentionReveal({
     </div>
   );
 }
-

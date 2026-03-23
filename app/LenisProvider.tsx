@@ -5,8 +5,9 @@ import { ReactLenis, useLenis } from 'lenis/react';
 import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { ensureGsapPlugins } from './lib/gsap';
 
-gsap.registerPlugin(ScrollTrigger);
+ensureGsapPlugins();
 
 type Props = {
   children: ReactNode;

@@ -4,9 +4,9 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { ensureGsapPlugins } from '../lib/gsap';
 
-// ✅ Module level — runs once, not on every mount
-gsap.registerPlugin(ScrollTrigger, SplitText);
+ensureGsapPlugins();
 
 type TagType = 'h1' | 'h2' | 'h3' | 'span' | 'p';
 

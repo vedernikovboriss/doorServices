@@ -3,7 +3,7 @@
 :root {
   --black: #141314;
   --white: #ececea;
-  --gray: #202020;
+  --gray: #9d9e9e;
   --accent: #e41e25;
 }
 
@@ -83,7 +83,7 @@ body {
 
 @layer base {
   .h1 {
-    @apply text-4xl font-medium tracking-tight sm:text-4xl md:text-5xl lg:text-[5rem];
+    @apply text-4xl font-medium tracking-tight sm:text-4xl md:text-5xl lg:text-[4.3rem];
   }
   .h2 {
     @apply text-[1.9rem] font-medium leading-[1.1] tracking-tight sm:text-4xl md:text-5xl lg:text-[5.7rem] lg:leading-[1];
@@ -124,4 +124,31 @@ body {
     background-size: 1.25rem;
     padding-right: 2.5rem;
   }
+}
+
+/* Scrambling chars — accent color */
+.charScramble {
+  color: var(--accent);
+}
+
+.charScramble-new {
+  color: var(--black);
+}
+
+.stat-div {
+  transform: scale(0) rotate(-180deg);
+  transform-origin: center;
+  transition: transform 0.35s ease-in-out;
+}
+
+.stats-item:hover .stat-div {
+  transform: scale(1) rotate(0);
+}
+
+.stat-title {
+  transition: transform 0.35s ease-in-out;
+}
+
+.stats-item:hover .stat-title {
+  transform: translateX(20px);
 }

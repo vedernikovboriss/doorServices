@@ -6,8 +6,9 @@ import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
 import { useLenis } from 'lenis/react';
 import { useTransitionRouter } from 'next-view-transitions';
+import { ensureGsapPlugins } from '../lib/gsap';
 
-gsap.registerPlugin(SplitText);
+ensureGsapPlugins();
 
 const FORM_SECTION_ID = 'cta-form';
 
@@ -118,13 +119,13 @@ export default function ButtonPrimary({
     const stagger = { each: 0.015, from: 'center' as const };
     gsap.to(top.chars, {
       yPercent: 0,
-      duration: 0.28,
+      duration: 0.32,
       stagger,
       ease: 'power2.out',
     });
     gsap.to(bottom.chars, {
       yPercent: 100,
-      duration: 0.28,
+      duration: 0.32,
       stagger,
       ease: 'power2.out',
     });
@@ -143,10 +144,10 @@ export default function ButtonPrimary({
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
     >
-      <ButtonPrimaryIcon className="absolute z-0 left-0 top-0 origin-left transition-transform duration-550 ease-in-out scale-0 -rotate-90 group-hover:scale-100 group-hover:rotate-0" />
+      <ButtonPrimaryIcon className="absolute z-0 left-0 top-0 origin-left transition-transform duration-550 group-hover:ease-[cubic-bezier(0.77, 0, 0.175, 1)] scale-0 -rotate-90 group-hover:scale-100 group-hover:rotate-0" />
       <div
         className={`relative z-1 py-4 px-4 flex items-center justify-center rounded-sm text-[0.8rem] tracking-wider whitespace-nowrap 
-            font-semibold uppercase transition-transform duration-550 ease-in-out group-hover:translate-x-12 overflow-hidden ${
+            font-semibold uppercase transition-transform duration-550 group-hover:ease-[cubic-bezier(0.77, 0, 0.175, 1)] group-hover:translate-x-12 overflow-hidden ${
               isDark
                 ? 'text-(--white) bg-(--black)'
                 : 'text-(--black) bg-(--white)'
@@ -174,7 +175,7 @@ export default function ButtonPrimary({
           children
         )}
       </div>
-      <ButtonPrimaryIcon className="relative z-0 origin-right transition-transform duration-550 ease-in-out group-hover:scale-0 group-hover:-rotate-90" />
+      <ButtonPrimaryIcon className="relative z-0 origin-right transition-transform duration-550 group-hover:ease-[cubic-bezier(0.77, 0, 0.175, 1)] group-hover:scale-0 group-hover:-rotate-90" />
     </button>
   );
 }
