@@ -166,8 +166,16 @@ const page = () => {
           </div>
         </div>
         <div className="grid w-full grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-4">
-          <div className="relative min-h-[200px] sm:min-h-[280px] lg:min-h-0 lg:row-span-2 lg:col-start-1 lg:row-start-1 rounded-sm overflow-hidden bg-(--gray) flex items-center justify-center p-4">
-            <DoorSVG2 />
+          <div className="relative min-h-[180px] xs:min-h-[220px] sm:min-h-[260px] md:min-h-[280px] lg:min-h-0 lg:row-span-2 lg:col-start-1 lg:row-start-1 rounded-sm overflow-hidden bg-(--gray) flex items-center justify-center p-2 xs:p-3 sm:p-4">
+            <DoorSVG2
+              className="
+                w-[70%] xs:w-[65%] sm:w-[60%] md:w-[75%] lg:w-full
+                max-w-[250px] xs:max-w-[320px] md:max-w-[400px] lg:max-w-full
+                h-auto
+                mx-auto
+                block
+              "
+            />
           </div>
           {whyUs.map((item, index) => {
             const lgGrid = [
@@ -256,7 +264,7 @@ function DoorSVG() {
   );
 }
 
-function DoorSVG2() {
+function DoorSVG2({ className }: { className?: string }) {
   return (
     <svg
       width="500"
@@ -264,6 +272,7 @@ function DoorSVG2() {
       viewBox="0 0 541 1380"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <path
         d="M386 0.787109L1 302.287V1379.29"
