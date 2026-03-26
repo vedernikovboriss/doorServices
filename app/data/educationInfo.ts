@@ -67,15 +67,18 @@ export const whatYouWillLearn = [
 export const howMuchCanYouEarn = [
   {
     title: 'Новички',
-    salary: '100+',
+    salary: 100,
+    subvalue: '+',
   },
   {
     title: 'Опытные мастера',
-    salary: '150-200',
+    salary: 150,
+    subvalue: '+',
   },
   {
     title: 'Профессионалы с командой',
-    salary: '250+',
+    salary: 250,
+    subvalue: '+',
   },
 ];
 

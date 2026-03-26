@@ -1,5 +1,6 @@
 import React from 'react';
 import { PhoneIcon, MailIcon, MapPinIcon } from 'lucide-react';
+import FadeInOnScroll from './FadeInOnScroll';
 
 const ContactSubinfo = ({ description }: { description: string }) => {
   return (
@@ -9,15 +10,23 @@ const ContactSubinfo = ({ description }: { description: string }) => {
         <p className="p-small">{description}</p>
       </div>
       <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 w-full">
-        <ContactInfo icon={<MailIcon className="w-4 h-4 text-background" />}>
-          info@example.com
-        </ContactInfo>
-        <ContactInfo icon={<PhoneIcon className="w-4 h-4 text-background" />}>
-          +7 (999) 999-99-99
-        </ContactInfo>
-        <ContactInfo icon={<MapPinIcon className="w-4 h-4 text-background" />}>
-          Москва, ул. Ленина, 1
-        </ContactInfo>
+        <FadeInOnScroll delay={0} className="w-full sm:w-auto">
+          <ContactInfo icon={<MailIcon className="w-4 h-4 text-background" />}>
+            info@tehotdel.com
+          </ContactInfo>
+        </FadeInOnScroll>
+        <FadeInOnScroll delay={0.07} className="w-full sm:w-auto">
+          <ContactInfo icon={<PhoneIcon className="w-4 h-4 text-background" />}>
+            +7 (931) 588-90-99
+          </ContactInfo>
+        </FadeInOnScroll>
+        <FadeInOnScroll delay={0.14} className="w-full sm:w-auto">
+          <ContactInfo
+            icon={<MapPinIcon className="w-4 h-4 text-background" />}
+          >
+            Невский проспект, 24, Санкт-Петербург
+          </ContactInfo>
+        </FadeInOnScroll>
       </div>
     </div>
   );

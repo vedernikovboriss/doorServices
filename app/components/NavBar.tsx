@@ -62,7 +62,7 @@ export default function NavBar() {
           <LogoSVG />
         </div>
         <span className="subtitle opacity-50 hidden sm:inline truncate">
-          +7 (999) 999-99-99
+          +7 (931) 588-90-99
         </span>
       </div>
       <div className="hidden lg:flex items-center gap-4">
@@ -100,7 +100,7 @@ export default function NavBar() {
             </a>
           ))}
           <span className="subtitle opacity-50 pt-2 sm:hidden">
-            +7 (999) 999-99-99
+            +7 (931) 588-90-99
           </span>
         </div>
       )}

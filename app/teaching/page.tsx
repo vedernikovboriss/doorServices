@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../components/Footer';
 import ButtonPrimary from '../components/ButtonPrimary';
 import AnimatedText from '../components/AnimatedText';
+import StatsItem from '../components/StatsItem';
 
 import {
   Users,
@@ -135,19 +136,13 @@ const page = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {howMuchCanYouEarn.map((item, index) => (
-            <FadeInOnScroll
+            <StatsItem
               key={index}
-              delay={index * 0.05}
-              className="flex flex-col justify-between gap-8 sm:gap-16 lg:gap-32 p-6 sm:p-8 bg-white rounded-sm"
-            >
-              <h3 className="card-title">{item.title}</h3>
-              <div className="flex flex-col gap-4">
-                <span className="numbers-title">{item.salary}</span>
-                <span className="p-small text-(--accent) font-semibold!">
-                  тыс. ₽/мес
-                </span>
-              </div>
-            </FadeInOnScroll>
+              title={item.title}
+              value={item.salary}
+              subvalue={item.subvalue}
+              note="тыс. ₽/мес"
+            />
           ))}
         </div>
       </section>

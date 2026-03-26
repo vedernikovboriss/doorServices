@@ -67,10 +67,10 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <span className="subtitle">(Информация)</span>
             <div className="flex flex-col gap-2">
-              <span className="text-sm font-regular">+7 (999) 999-99-99</span>
-              <span className="text-sm font-regular">info@example.com</span>
+              <span className="text-sm font-regular">+7 (931) 588-90-99</span>
+              <span className="text-sm font-regular">info@tehotdel.com</span>
               <span className="text-sm font-regular">
-                Москва, ул. Ленина, 1
+                Невский проспект, 24, Санкт-Петербург
               </span>
             </div>
           </div>

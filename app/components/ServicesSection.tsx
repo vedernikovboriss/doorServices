@@ -75,13 +75,15 @@ export default function ServicesSection({
         </div>
         {isTextAnimated ? (
           <AnimatedText as="p" className="p-medium">
-            В этом разделе вы найдете информацию о наших услугах. Ознакомьтесь с
-            предложениями и убедитесь в широких возможностях нашей команды.
+            Мы берём на себя весь цикл: от технической консультации на объекте,
+            замера и технадзора до конечного монтажа с гарантийным обслуживанием
+            3 года
           </AnimatedText>
         ) : (
           <p className="p-medium">
-            В этом разделе вы найдете информацию о наших услугах. Ознакомьтесь с
-            предложениями и убедитесь в широких возможностях нашей команды.
+            Мы берём на себя весь цикл: от технической консультации на объекте,
+            замера и технадзора до конечного монтажа с гарантийным обслуживанием
+            3 года
           </p>
         )}
       </div>
@@ -116,23 +118,25 @@ function ServicesItem({
   link?: string;
 }) {
   return (
-    <div className="service-item flex flex-col justify-between gap-8 lg:gap-16 p-6 sm:p-8 bg-white rounded-sm">
+    <div className="service-item flex flex-col justify-between gap-8 lg:gap-32 lg:min-h-[400px] p-6 sm:p-8 bg-white rounded-sm">
       <h3 className="card-title">
         {title}
         <span className="text-xs font-semibold ml-1 mt-1 align-top h-full">
           [0{index + 1}]
         </span>
       </h3>
-      {link && (
-        <TextLink
-          href={link}
-          className="text-sm cursor-pointer font-medium uppercase text-(--accent)"
-        >
-          Подробнее
-          <ArrowUpRightIcon className="w-4 h-4" />
-        </TextLink>
-      )}
-      <p className="p-small">{description}</p>
+      <div className="flex flex-col gap-4">
+        <p className="p-small">{description}</p>
+        {link && (
+          <TextLink
+            href={link}
+            className="text-sm cursor-pointer font-medium uppercase text-(--accent)"
+          >
+            Подробнее
+            <ArrowUpRightIcon className="w-4 h-4" />
+          </TextLink>
+        )}
+      </div>
     </div>
   );
 }

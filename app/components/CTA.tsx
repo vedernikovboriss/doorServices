@@ -18,7 +18,13 @@ const inputClass =
 
 const selectClass = `${inputClass} appearance-none select-chevron`;
 
-const CTA = ({ sectionClassName }: { sectionClassName?: string }) => {
+const CTA = ({
+  sectionClassName,
+  isHero = false,
+}: {
+  sectionClassName?: string;
+  isHero?: boolean;
+}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -41,13 +47,24 @@ const CTA = ({ sectionClassName }: { sectionClassName?: string }) => {
           <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] lg:w-[170px] lg:h-[170px] shrink-0">
             <DoorSVG />
           </div>
-          <AnimatedText as="h3" className="h3">
-            Оставьте Заявку
-          </AnimatedText>
-          <AnimatedText as="p" className="p-medium">
-            Мы свяжемся с вами в ближайшее время и обсудим детали вашего
-            запроса.
-          </AnimatedText>
+          {isHero ? (
+            <h3 className="h3">Оставьте Заявку</h3>
+          ) : (
+            <AnimatedText as="h3" className="h3">
+              Оставьте Заявку
+            </AnimatedText>
+          )}
+          {isHero ? (
+            <p className="p-medium">
+              Мы свяжемся с вами в ближайшее время и обсудим детали вашего
+              запроса.
+            </p>
+          ) : (
+            <AnimatedText as="p" className="p-medium">
+              Мы свяжемся с вами в ближайшее время и обсудим детали вашего
+              запроса.
+            </AnimatedText>
+          )}
         </div>
         <div className="w-full min-h-0 h-s rounded-sm flex flex-col gap-6">
           <form onSubmit={handleSubmit} className="flex flex-col gap-8">

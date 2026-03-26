@@ -29,7 +29,7 @@ export default function HeroSection() {
         <ArrowUpRightIcon />
       </div>
 
-      <div className="absolute z-0 bottom-0 right-0 w-full h-full overflow-hidden rounded-sm opacity-25 pointer-events-none">
+      <div className="absolute z-0 bottom-0 right-0 w-full h-full overflow-hidden rounded-sm opacity-31 pointer-events-none">
         <Image
           className="w-full h-full object-cover"
           src="/heroImg.avif"

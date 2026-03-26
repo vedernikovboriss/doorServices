@@ -47,11 +47,11 @@ export default function AboutAttentionReveal({ items }: { items: string[] }) {
       ref={attentionRef}
       className="w-full flex flex-col items-start justify-center gap-2"
     >
-      <span className="subtitle">(НА ЧТО МЫ ОБРАЩАЕМ ВНИМАНИЕ)</span>
+      <span className="subtitle">(На что важно обратить внимание клиенту)</span>
       <ul className="w-full flex flex-col items-start justify-center">
         {items.map((item, index) => (
           <li
-            className="w-full flex items-center gap-2 border-b border-(--black)/10 py-4 "
+            className="w-full flex items-center gap-4 border-b border-(--black)/10 py-4 "
             key={index}
           >
             <span className="text-sm font-bold opacity-40">

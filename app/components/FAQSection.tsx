@@ -1,25 +1,32 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import ButtonPrimary from './ButtonPrimary';
 import AnimatedText from './AnimatedText';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { ensureGsapPlugins } from '../lib/gsap';
 
 const faqItems = [
   {
     question: 'Сколько времени занимает установка одной двери?',
     answer:
-      'Средний срок установки одной межкомнатной двери — от 1 до 3 часов в зависимости от сложности проёма, типа двери и необходимости доработки. Точные сроки озвучиваются после замера.',
+      'В среднем время установки одной двери от 1 до 3 часов. В зависимости от сложности проема, типа двери и дополнительных работ. Более точный срок Вам сможет озвучить мастер выехавший на объект перед началом работ.',
   },
   {
-    question: 'Нужно ли подготавливать проём заранее?',
+    question: 'На сколько важно подготовить проем к монтажу?',
     answer:
-      'Идеально, если проём уже подготовлен: выровнен, имеет правильные размеры и завершены черновые отделочные работы. Мы можем провести замер и дать рекомендации по подготовке или выполнить доработку проёма в рамках монтажа.',
+      'Очень важно. Каждое изделие имеет свои рекомендации по размерам проема. Эти рекомендации дает фабрика с учетом технических особенностей конструкции. Правильно подготовленный проем гарантия качественного монтажа и долгого использования изделия.',
   },
   {
-    question: 'Даёте ли вы гарантию на работу?',
+    question: 'Чем вы лучше других?',
     answer:
-      'Да. Мы даём гарантию на выполненные монтажные работы. Срок и условия зависят от типа услуги и оговариваются перед началом работ.',
+      'Так как у нас за плечами многолетний опыт работы в премиум сегменте. Решение сложных и нестандартных задач а так же индивидуальный подход к каждому Клиенту.',
+  },
+  {
+    question: 'Даете ли вы гарантию на работу?',
+    answer: 'Гарантия на выполненные работы 3 года',
   },
   {
     question: 'Работаете ли вы с дверями клиента или только со своими?',
@@ -35,6 +42,57 @@ const faqItems = [
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const listRef = useRef<HTMLUListElement | null>(null);
+
+  useLayoutEffect(() => {
+    const root = listRef.current;
+    if (!root) return;
+
+    ensureGsapPlugins();
+    const items = Array.from(root.querySelectorAll('li.faq-item')) as HTMLElement[];
+    if (!items.length) return;
+
+    // Start hidden to avoid flicker while ScrollTrigger sets up.
+    gsap.set(items, { opacity: 0, y: 14 });
+
+    const triggers = items.map((item, index) =>
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top 88%',
+        once: true,
+        onEnter: () => {
+          gsap.to(item, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power2.out',
+            delay: index * 0.03,
+            overwrite: 'auto',
+          });
+        },
+      })
+    );
+
+    // Reveal immediately if the section is already in view.
+    requestAnimationFrame(() => {
+      items.forEach((item) => {
+        if (item.getBoundingClientRect().top < window.innerHeight * 0.88) {
+          gsap.to(item, {
+            opacity: 1,
+            y: 0,
+            duration: 0.45,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        }
+      });
+      ScrollTrigger.refresh();
+    });
+
+    return () => {
+      triggers.forEach((t) => t.kill());
+    };
+  }, []);
 
   return (
     <section className="section-base-padding bg-(--white)">
@@ -60,9 +118,12 @@ export default function FAQSection() {
         <ButtonPrimary>Заказать услугу</ButtonPrimary>
 
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <ul className="lg:col-start-2 flex flex-col">
+          <ul ref={listRef} className="lg:col-start-2 flex flex-col">
             {faqItems.map((item, index) => (
-              <li key={index} className="border-b border-(--black)/10">
+              <li
+                key={index}
+                className="faq-item border-b border-(--black)/10"
+              >
                 <button
                   type="button"
                   onClick={() =>

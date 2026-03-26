@@ -11,6 +11,11 @@ export const projectImages = [
   { src: '/projectsOptimized/pr10.avif', id: 'prImg10' },
   { src: '/projectsOptimized/pr11.avif', id: 'prImg11' },
   { src: '/projectsOptimized/pr12.avif', id: 'prImg12' },
+  { src: '/projectsOptimized/pr13.avif', id: 'prImg13' },
+  { src: '/projectsOptimized/pr14.avif', id: 'prImg14' },
+  { src: '/projectsOptimized/pr15.avif', id: 'prImg15' },
+  { src: '/projectsOptimized/pr16.avif', id: 'prImg16' },
+  { src: '/projectsOptimized/pr17.avif', id: 'prImg17' },
 ] as const;
 
 export type ProjectImage = (typeof projectImages)[number];

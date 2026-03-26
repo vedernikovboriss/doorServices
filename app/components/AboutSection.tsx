@@ -6,10 +6,9 @@ import AboutAttentionReveal from './AboutAttentionReveal';
 
 export default function AboutSection() {
   const aboutItems = [
-    'Правильно подготовавливаем габариты проёма.',
-    'Учитываем стыки с разными видами напольных покрытий.',
-    'Продумать расположение выключателей.',
-    'Выполняем монтаж без потерь времени.',
+    'Выбор производителя дверей, соответствующего вашим требованиям и бюджету',
+    'Наличие профессионалов, которые cмогут правильно выполнить техническое задание по подготовке проемов к монтажу, выбранного вами изделия.',
+    'Выбор службы, которое возьмет на себя гарантированное ведение полного цикла работ: от консультации и замера до монтажа и гарантийного обслуживания',
   ];
 
   return (
@@ -17,7 +16,7 @@ export default function AboutSection() {
       <div className="flex flex-col justify-center gap-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="subtitle text-(--accent)">
-            //СЕКРЕТ НАШЕГО ВЫСОКОГО КАЧЕСТВА
+            СЕКРЕТ НАШЕГО ВЫСОКОГО КАЧЕСТВА
           </span>
           <span className="sm:block hidden subtitle text-(--accent)">
             (О НАС)
@@ -38,7 +37,7 @@ export default function AboutSection() {
             учетом всех технических нюансов.
           </AnimatedText>
           <AnimatedText as="p" className="p-medium">
-            За более чем 100 успешно реализованных проектов мы приобрели
+            За более чем 28 000 успешно реализованных проектов мы приобрели
             обширный опыт и глубокие знания во всех аспектах дверного монтажа.
             Наши мастера — эксперты своего дела с многолетней практикой, что
             позволяет нам браться за задачи любой сложности и гарантировать
@@ -49,8 +48,8 @@ export default function AboutSection() {
         </div>
         <div className="w-full flex flex-col items-start justify-center gap-6 lg:gap-8 h-full">
           <FadingInImage
-            image="/projectsOptimized/pr4.avif"
-            alt="About Section"
+            image="/aboutImg.avif"
+            alt="Изображение монтажа межкомнатных дверей"
             className="aspect-4/3 min-h-[200px] sm:min-h-[280px] w-full"
           />
           <AboutAttentionReveal items={aboutItems} />

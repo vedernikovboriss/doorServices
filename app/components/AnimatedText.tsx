@@ -81,9 +81,11 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
 
         ScrollTrigger.refresh();
 
-        // ✅ In-viewport check for hero / above-fold text
+        // ✅ In-viewport check for hero / above-fold text:
+        // Reveal immediately if *any part* is visible (not only if the top is above a threshold).
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.85) {
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isInViewport) {
           play();
         }
       });
