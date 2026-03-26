@@ -16,7 +16,7 @@ const StatsSection = () => {
   return (
     <section className="section-base-padding">
       <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
-        <div className="w-full h-full flex items-center justify-center bg-(--gray) min-h-[110px] sm:min-h-[125px] md:min-h-[150px] lg:min-h-0">
+        <div className="w-full h-full flex items-center justify-center bg-(--gray) min-h-[200px] sm:min-h-[200px] md:min-h-[150px] lg:min-h-0">
           <StatSVG className="w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-full lg:h-full max-w-[175px] max-h-[175px]" />
         </div>
         {stats.map((stat) => (
