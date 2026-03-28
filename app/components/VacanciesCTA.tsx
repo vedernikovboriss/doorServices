@@ -97,6 +97,26 @@ const VacanciesCTA = ({ sectionClassName }: { sectionClassName?: string }) => {
               </label>
               <label className="flex flex-col gap-1">
                 <span className="text-sm opacity-70">
+                  Резюме (pdf, doc, docx)
+                </span>
+                <input
+                  type="file"
+                  name="resume"
+                  accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  onChange={(e) => setResume(e.target.files?.[0] ?? null)}
+                  className={`${inputClass} text-sm file:mr-4 file:rounded-sm file:border-0 file:bg-(--black)/5 file:px-3 file:py-2 file:text-sm file:font-medium file:text-(--black) hover:file:bg-(--black)/9`}
+                />
+                {resume && (
+                  <span
+                    className="text-xs opacity-60 truncate"
+                    title={resume.name}
+                  >
+                    Выбрано: {resume.name}
+                  </span>
+                )}
+              </label>
+              <label className="flex flex-col gap-1">
+                <span className="text-sm opacity-70">
                   Сопроводительное письмо
                 </span>
                 <textarea

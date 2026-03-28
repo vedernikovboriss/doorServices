@@ -6,7 +6,6 @@ import FAQSection from './components/FAQSection';
 import PartnersSection from './components/PartnersSection';
 import Footer from './components/Footer';
 import StatsSection from './components/StatsSection';
-import HeroSec2 from './components/HeroSec2';
 import HeroSection from './components/HeroSection';
 import MarqueeSection from './components/MarqueeSection';
 

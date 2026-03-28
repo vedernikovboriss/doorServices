@@ -20,38 +20,11 @@ export default function StatsItem({
 }: StatsItemProps) {
   const itemRef = useRef<HTMLDivElement | null>(null);
   const numberRef = useRef<HTMLSpanElement | null>(null);
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const titleTweenRef = useRef<gsap.core.Tween | null>(null);
 
   const safeValue = useMemo(
     () => (Number.isFinite(value) ? value : 0),
     [value]
   );
-
-  const handleMouseEnter = () => {
-    const titleEl = titleRef.current;
-    if (!titleEl) return;
-    ensureGsapPlugins();
-    titleTweenRef.current?.kill();
-    titleTweenRef.current = gsap.to(titleEl, {
-      duration: 0.68,
-      ease: 'power2.inOut',
-      scrambleText: {
-        text: title,
-        chars: '!@#$%^&*()',
-        speed: 0.75,
-        newClass: 'charScramble-new',
-        oldClass: 'charScramble',
-      },
-    } as gsap.TweenVars);
-  };
-
-  const handleMouseLeave = () => {
-    const titleEl = titleRef.current;
-    if (!titleEl) return;
-    titleTweenRef.current?.kill();
-    titleEl.textContent = title;
-  };
 
   useEffect(() => {
     const triggerEl = itemRef.current;
@@ -102,15 +75,12 @@ export default function StatsItem({
 
     return () => {
       trigger.kill();
-      titleTweenRef.current?.kill();
     };
   }, [safeValue, subvalue]);
 
   return (
     <div
       ref={itemRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       className="stats-item w-full flex flex-col items-start justify-between gap-8 sm:gap-16 lg:gap-48 lg:min-h-[400px] p-6 sm:p-8 rounded-sm bg-white"
     >
       <div className="flex flex-col gap-2">
@@ -123,9 +93,7 @@ export default function StatsItem({
 
       <div className="relative flex items-center gap-2 isolate">
         <div className="stat-div absolute left-0 w-3 h-3 bg-(--accent) rounded-[1.5px] z-0" />
-        <h2 ref={titleRef} className="stat-title subtitle relative z-1">
-          {title}
-        </h2>
+        <h2 className="stat-title subtitle relative z-1">{title}</h2>
       </div>
     </div>
   );
